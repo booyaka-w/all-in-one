@@ -1,0 +1,43 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: resource-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/booyaka?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&transformedBitIsBoolean=true&allowPublicKeyRetrieval=true
+    username: root  
+    password: root
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      connection-test-query: SELECT 1
+  thymeleaf:
+    cache: false
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: ""
+    timeout: 1000
+    jedis:
+      pool:
+        max-idle: 50
+        max-active: 100
+        max-wait: 50
+        min-idle: 10
+        time-between-eviction-runs: 3000
+    
+mybatis:
+  type-aliases-package: com.booyaka.web.*.model
+  mapper-locations:
+  - com/booyaka/web/*/mapper/*.xml
+  - classpath:/META-INF/mybatis/mapper/M_WORKER*.xml
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  page-size-zero: true

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="loginBox">
+				<div class="userImage">
+					<img src="image/catFace.png">
+				</div>
+				<form id="loginForm">
+					<div class="input-wrapper">
+						<label>邮箱:</label>
+						<input type="email" name="" placeholder="请输入邮箱">
+						<div class="error-email" style="display: none;">
+							<div class="email-msg"></div>
+							<div class="triangle"></div>
+						</div>
+					</div>
+					<div class="input-wrapper">
+						<label>密码:</label>
+						<input type="password" name="" placeholder="密码">
+						<div class="error-pass" style="display: none;">
+							<div class="pass-msg"></div>
+							<div class="triangle"></div>
+						</div>
+					</div>
+					<input type="button" name="" value="登录" onclick="validateForm()">
+				</form>
+			</div>
+		</div>
+		<div class="confirmation showOk" style="display: none;">
+			<img src="image/gato.jpg">
+		</div>
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/script.js"></script>
+	</body>
+</html>
