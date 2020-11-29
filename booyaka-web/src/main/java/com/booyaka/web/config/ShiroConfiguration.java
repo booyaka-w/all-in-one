@@ -17,8 +17,7 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.booyaka.web.shiro.ShiroJedisCacheManager;
 import com.booyaka.web.shiro.ShiroRealm;
-import com.booyaka.web.shiro.UrlPathMatchingFilter;
-import com.booyaka.xtreme.web.system.service.MenuServiceClient;
+import com.booyaka.web.system.service.SysMenuService;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
@@ -26,7 +25,7 @@ import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 public class ShiroConfiguration {
 
 	@Autowired
-	MenuServiceClient menuServiceClient;
+	SysMenuService menuService;
 
 	/**
 	 * 凭证匹配器
@@ -44,33 +43,30 @@ public class ShiroConfiguration {
 	 */
 	@Bean
 	public ShiroFilterFactoryBean shiroFilterFactoryBean() {
-		String ButtonList = menuServiceClient.queryButtonByUserId("650454045110042635");
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		/* 默认的登陆访问url */
-		shiroFilterFactoryBean.setLoginUrl("/login");
+		shiroFilterFactoryBean.setLoginUrl("/system/login");
 		/* 登陆成功访问url */
 		shiroFilterFactoryBean.setSuccessUrl("/index");
 		/* 未授权界面 */
 		shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized");
 		/* 自定义拦截器 */
 		Map<String, Filter> filtersMap = new LinkedHashMap<String, Filter>();
-		/* 访问权限配置 */
-		filtersMap.put("requestURL", getUrlPathMatchingFilter());
 		shiroFilterFactoryBean.setFilters(filtersMap);
 		/* 拦截器 */
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 
 		/* 不需要认证 */
-		filterChainDefinitionMap.put("/dologin", "anon");
+		filterChainDefinitionMap.put("/system/dologin", "anon");
 		filterChainDefinitionMap.put("/css/**", "anon");
+		filterChainDefinitionMap.put("/fonts/**", "anon");
 		filterChainDefinitionMap.put("/images/**", "anon");
-		filterChainDefinitionMap.put("/img/**", "anon");
-		filterChainDefinitionMap.put("/js/**", "anon");
 		filterChainDefinitionMap.put("/plugin/**", "anon");
+		filterChainDefinitionMap.put("/js/**", "anon");
 		/* 退出 */
-		filterChainDefinitionMap.put("/logout", "logout");
+		filterChainDefinitionMap.put("/system/logout", "logout");
 		/* 需要认证 */
-		filterChainDefinitionMap.put("/**/url", "requestURL");
+//		filterChainDefinitionMap.put("/**/url", "requestURL");
 //		for (SysMenu menu : ButtonList) {
 //			filterChainDefinitionMap.put(menu.getResource(), "perms[" + menu.getMenuPath() + "]");
 //		}
@@ -91,13 +87,6 @@ public class ShiroConfiguration {
 		// defaultWebSecurityManager.setCacheManager(jedisCacheManager()); //使用redis缓存
 		defaultWebSecurityManager.setCacheManager(memoryConstrainedCacheManager()); // 使用shiro自带缓存
 		return defaultWebSecurityManager;
-	}
-
-	/**
-	 * 访问 权限 拦截器
-	 */
-	public UrlPathMatchingFilter getUrlPathMatchingFilter() {
-		return new UrlPathMatchingFilter();
 	}
 
 	/**

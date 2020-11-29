@@ -55,4 +55,22 @@ public class SysMenuServiceImpl implements SysMenuService {
 		List<SysMenu> list = sysMenuMapper.querySelective(sysMenu);
 		return new PageInfo<SysMenu>(list);
 	}
+
+	@Override
+	public List<SysMenu> queryModelByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<SysMenu> queryMenuByUserId(String userId, String menuId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<SysMenu> queryButtonByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

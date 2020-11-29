@@ -8,7 +8,6 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.DisabledAccountException;
-import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -21,16 +20,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.booyaka.web.commons.ActiveUser;
 import com.booyaka.web.system.model.SysMenu;
 import com.booyaka.web.system.model.SysRole;
 import com.booyaka.web.system.model.SysUserRole;
-import com.booyaka.xtreme.commons.GlobalVariable;
-import com.booyaka.xtreme.commons.ResponseModel;
-import com.booyaka.xtreme.web.system.service.MenuServiceClient;
-import com.booyaka.xtreme.web.system.service.RoleMenuServiceClient;
-import com.booyaka.xtreme.web.system.service.RoleServiceClient;
-import com.booyaka.xtreme.web.system.service.UserRoleServiceClient;
-import com.booyaka.xtreme.web.system.service.UserServiceClient;
+import com.booyaka.web.system.model.UserInfo;
+import com.booyaka.web.system.service.SysMenuService;
+import com.booyaka.web.system.service.SysRoleService;
+import com.booyaka.web.system.service.SysUserRoleService;
+import com.booyaka.web.system.service.UserInfoService;
 
 /**
  * shiro权限认证
@@ -40,19 +38,16 @@ public class ShiroRealm extends AuthorizingRealm {
 	private static Logger LOGGER = LoggerFactory.getLogger(ShiroRealm.class);
 
 	@Autowired
-	UserServiceClient sysUserService;
+	UserInfoService userInfoService;
 
 	@Autowired
-	UserRoleServiceClient sysUserRoleService;
+	SysUserRoleService userRoleService;
 
 	@Autowired
-	RoleMenuServiceClient sysRoleMenuService;
+	SysMenuService msenuService;
 
 	@Autowired
-	MenuServiceClient sysMenuService;
-
-	@Autowired
-	RoleServiceClient sysRoleService;
+	SysRoleService roleService;
 
 	/**
 	 * 认证
@@ -63,28 +58,24 @@ public class ShiroRealm extends AuthorizingRealm {
 		LOGGER.info("-----------------------------------Shiro开始登录认证-------------------------------------------");
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 
-		ResponseModel sysUser = sysUserService.queryByUserName(token.getUsername());
-		if (sysUser == null) {
+		UserInfo userInfo = userInfoService.queryByUserName(token.getUsername());
+		if (userInfo == null) {
 			throw new UnknownAccountException();
 		}
 
-		if (GlobalVariable.ACCOUNT_STATUS.LOCK == sysUser.getUserStatus()) {
-			throw new LockedAccountException();
-		}
-
-		SysUserRole sysUserRole = new SysUserRole();
-		sysUserRole.setSysUserId(sysUser.getUserId());
-		List<SysUserRole> surlist = sysUserRoleService.selectSelective(sysUserRole);
-		if (surlist.size() != 0) {
-			for (SysUserRole userRole : surlist) {
-				SysRole sysRole = sysRoleService.selectByPrimaryKey(userRole.getSysRoleId());
+		SysUserRole userRole = new SysUserRole();
+		userRole.setSysUserId(userInfo.getUserId());
+		List<SysUserRole> userRoleList = userRoleService.querySelective(userRole);
+		if (userRoleList.size() != 0) {
+			for (SysUserRole sr : userRoleList) {
+				SysRole sysRole = roleService.queryByPrimaryKey(sr.getSysRoleId());
 				if (sysRole.getRoleStatus() == 2) {
 					throw new DisabledAccountException();
 				}
 			}
 		}
-		return new SimpleAuthenticationInfo(sysUser.getUserName(), sysUser.getPassword(),
-				ByteSource.Util.bytes(sysUser.getSalt()), this.getName());
+		return new SimpleAuthenticationInfo(userInfo.getUserName(), userInfo.getPassword(), ByteSource.Util.bytes(""),
+				this.getName());
 	}
 
 	/**
@@ -96,7 +87,7 @@ public class ShiroRealm extends AuthorizingRealm {
 		ActiveUser activeUser = (ActiveUser) SecurityUtils.getSubject().getSession().getAttribute("activeUser");
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		List<String> buttenPermissions = new ArrayList<String>();
-		List<SysMenu> buttonList = sysMenuService.queryButtonByUserId(activeUser.getUser().getUserId());
+		List<SysMenu> buttonList = msenuService.queryButtonByUserId(activeUser.getUserInfo().getUserId());
 		if (buttonList.size() > 0) {
 			for (SysMenu sysMenu : buttonList) {
 				buttenPermissions.add(sysMenu.getMenuPath());

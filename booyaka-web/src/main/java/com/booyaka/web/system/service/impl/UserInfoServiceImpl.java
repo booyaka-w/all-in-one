@@ -55,4 +55,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 		List<UserInfo> list = userInfoMapper.querySelective(userInfo);
 		return new PageInfo<UserInfo>(list);
 	}
+
+	@Override
+	public UserInfo queryByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

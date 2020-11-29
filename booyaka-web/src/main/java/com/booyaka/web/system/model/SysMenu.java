@@ -1,6 +1,8 @@
 package com.booyaka.web.system.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.booyaka.BaseModel;
 
@@ -90,6 +92,8 @@ public class SysMenu extends BaseModel {
 	 * 版本号
 	 */
 	private Integer version;
+
+	private List<SysMenu> childList = new ArrayList<SysMenu>();
 
 	public String getMenuId() {
 		return menuId;
@@ -211,6 +215,14 @@ public class SysMenu extends BaseModel {
 		this.version = version;
 	}
 
+	public List<SysMenu> getChildList() {
+		return childList;
+	}
+
+	public void setChildList(List<SysMenu> childList) {
+		this.childList = childList;
+	}
+
 	/**
 	 * ToString
 	 */
@@ -268,4 +280,5 @@ public class SysMenu extends BaseModel {
 		sb.append("]");
 		return sb.toString();
 	}
+
 }
