@@ -58,7 +58,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public UserInfo queryByUserName(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userInfoMapper.queryByUserName(userName);
 	}
 }

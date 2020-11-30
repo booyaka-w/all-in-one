@@ -117,4 +117,14 @@
      select * from user_info
     <include refid="SQL_WHERE" />
   </select>
+  
+  <select id="queryByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+	SELECT
+		* 
+	FROM
+		`user_info` 
+	WHERE
+		user_name = #{param1}  
+  </select>
+  
 </mapper>

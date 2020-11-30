@@ -1,8 +1,10 @@
 package com.booyaka.web.system.dao;
 
-import com.booyaka.web.system.model.UserInfo;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+
+import com.booyaka.web.system.model.UserInfo;
 
 /**
  * TODO 账户信息Dao
@@ -12,33 +14,35 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserInfoMapper {
-    /**
-     * TODO 添加
-     *  	
-     * @param userInfo
-     * @return int
-     * @throws Exception
-     */
-    int insertSelective(UserInfo userInfo) throws Exception;
+	/**
+	 * TODO 添加
+	 * 
+	 * @param userInfo
+	 * @return int
+	 * @throws Exception
+	 */
+	int insertSelective(UserInfo userInfo) throws Exception;
 
-    /**
-     * TODO 根据主键删除
-     *  	
-     * @param userId
-     * @return int
-     * @throws Exception
-     */
-    int deleteByPrimaryKey(String userId) throws Exception;
+	/**
+	 * TODO 根据主键删除
+	 * 
+	 * @param userId
+	 * @return int
+	 * @throws Exception
+	 */
+	int deleteByPrimaryKey(String userId) throws Exception;
 
-    /**
-     */
-    int updateSelectiveByPrimaryKey(UserInfo userInfo) throws Exception;
+	/**
+	 */
+	int updateSelectiveByPrimaryKey(UserInfo userInfo) throws Exception;
 
-    /**
-     */
-    UserInfo queryByPrimaryKey(String userId);
+	/**
+	 */
+	UserInfo queryByPrimaryKey(String userId);
 
-    /**
-     */
-    List<UserInfo> querySelective(UserInfo userInfo);
+	/**
+	 */
+	List<UserInfo> querySelective(UserInfo userInfo);
+
+	UserInfo queryByUserName(String userName);
 }
