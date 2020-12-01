@@ -6,6 +6,11 @@
 /booyaka-oauth2/.classpath
 /booyaka-oauth2/.project
 
+/booyaka-generator/.settings
+/booyaka-generator/target
+/booyaka-generator/.classpath
+/booyaka-generator/.project
+
 /booyaka-resource/.settings
 /booyaka-resource/target
 /booyaka-resource/.classpath
