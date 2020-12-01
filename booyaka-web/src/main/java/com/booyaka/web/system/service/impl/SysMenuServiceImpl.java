@@ -68,6 +68,6 @@ public class SysMenuServiceImpl implements SysMenuService {
 
 	@Override
 	public List<SysMenu> queryMenuByUserId(String userId, String menuId) {
-		return sysMenuMapper.queryMenuByUserId(userId);
+		return sysMenuMapper.queryMenuByUserId(userId, menuId);
 	}
 }

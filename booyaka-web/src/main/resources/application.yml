@@ -32,6 +32,7 @@ spring:
 mybatis:
   type-aliases-package: com.booyaka.web.*.model
   mapper-locations:
+  - classpath:/META-INF/mybatis/mapper/M_WORKER*.xml
   - com/booyaka/web/*/mapper/*.xml
 
 pagehelper:

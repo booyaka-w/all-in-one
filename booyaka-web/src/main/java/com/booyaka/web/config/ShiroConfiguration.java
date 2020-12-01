@@ -47,7 +47,7 @@ public class ShiroConfiguration {
 		/* 默认的登陆访问url */
 		shiroFilterFactoryBean.setLoginUrl("/system/login");
 		/* 登陆成功访问url */
-		shiroFilterFactoryBean.setSuccessUrl("/index");
+		shiroFilterFactoryBean.setSuccessUrl("/system/index");
 		/* 未授权界面 */
 		shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized");
 		/* 自定义拦截器 */

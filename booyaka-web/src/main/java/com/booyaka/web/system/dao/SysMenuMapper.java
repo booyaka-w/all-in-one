@@ -59,7 +59,7 @@ public interface SysMenuMapper {
 
 	List<SysMenu> queryModelByUserId(String userId);
 
-	List<SysMenu> queryMenuByUserId(String userId);
+	List<SysMenu> queryMenuByUserId(String userId, String menuId);
 
 	List<SysMenu> queryButtonByUserId(String userId);
 }
