@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80021
+ Source Server Version : 80022
  Source Host           : localhost:3306
  Source Schema         : booyaka
 
  Target Server Type    : MySQL
- Target Server Version : 80021
+ Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 01/12/2020 16:49:54
+ Date: 01/12/2020 20:58:25
 */
 
 SET NAMES utf8mb4;
@@ -198,7 +198,7 @@ CREATE TABLE `sys_menu`  (
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES ('650454045105848320', '系统管理', 'mdi mdi-view-dashboard', NULL, 1, 1, 1, 1, '0', '/a,/b', '', '650454045110042635', '2019-12-06 14:41:09', '2019-12-20 23:05:47', 0);
-INSERT INTO `sys_menu` VALUES ('650454045110042624', '菜单管理', '', '/menu/list/url', 1, 2, 1, 0, '650454045105848320', '/a,/b', '', '650454045110042635', '2019-12-06 14:41:09', '2019-12-24 22:38:04', 2);
+INSERT INTO `sys_menu` VALUES ('650454045110042624', '菜单管理', '', '/system/menu/page', 1, 2, 1, 0, '650454045105848320', '/a,/b', '', '650454045110042635', '2019-12-06 14:41:09', '2020-12-01 20:10:13', 2);
 INSERT INTO `sys_menu` VALUES ('650454045110042625', '角色管理', ' ', '/role/list/url', 1, 2, 1, 0, '650454045105848320', '/a,/b', '', ' ', '2019-12-06 14:41:09', '2019-12-27 11:12:13', 0);
 INSERT INTO `sys_menu` VALUES ('650454045110042626', '用户管理', ' ', '/user/list/url', 1, 2, 1, 0, '650454045105848320', '/a,/b', '', ' ', '2019-12-06 14:41:09', '2019-12-27 11:12:13', 0);
 INSERT INTO `sys_menu` VALUES ('650454045110042627', '添加模块', ' ', 'model-add', 1, 3, 1, 0, '650454045110042624', 'model-add', '', '650454045110042635', '2019-12-06 14:41:09', '2019-12-27 11:12:13', 13);
@@ -1750,7 +1750,7 @@ CREATE TABLE `worker_node`  (
   `modified` timestamp(0) NOT NULL COMMENT 'modified time',
   `created` timestamp(0) NOT NULL COMMENT 'created time',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'DB WorkerID Assigner for UID Generator' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'DB WorkerID Assigner for UID Generator' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of worker_node
