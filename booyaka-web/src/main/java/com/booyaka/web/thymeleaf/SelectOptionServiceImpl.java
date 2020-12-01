@@ -16,10 +16,10 @@ import com.alibaba.fastjson.JSON;
  * 简单的字典
  **/
 
-public class SelectOptionServiceImpl implements SelectOptionService {
-
+public class SelectOptionServiceImpl implements SelectOptionService{
+	
 	private Logger log = LoggerFactory.getLogger(SelectOptionServiceImpl.class);
-
+	
 	private CacheManager cacheManager;
 
 	public SelectOptionServiceImpl() {
@@ -28,7 +28,6 @@ public class SelectOptionServiceImpl implements SelectOptionService {
 	public SelectOptionServiceImpl(CacheManager cacheManager) {
 		this.cacheManager = cacheManager;
 	}
-
 	@Override
 	public List<Option> queryOption(String dictName, JdbcTemplate jdbcTemplate, boolean cacheable) {
 		Cache cache = null;
