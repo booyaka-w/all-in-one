@@ -50,11 +50,11 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/cn.amorou.uid/uid-generator-spring-boot-starter -->
-		<dependency>
-		    <groupId>cn.amorou.uid</groupId>
-		    <artifactId>uid-generator-spring-boot-starter</artifactId>
-		    <version>1.0.2</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>cn.amorou.uid</groupId> -->
+<!-- 		    <artifactId>uid-generator-spring-boot-starter</artifactId> -->
+<!-- 		    <version>1.0.2</version> -->
+<!-- 		</dependency> -->
 
 		<!-- shiro -->
 		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->

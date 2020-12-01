@@ -24,8 +24,6 @@ import com.booyaka.web.system.model.UserInfo;
 import com.booyaka.web.system.service.SysMenuService;
 import com.booyaka.web.system.service.UserInfoService;
 
-import cn.amorou.uid.UidGenerator;
-
 /**
  * TODO Controller
  *
@@ -42,14 +40,14 @@ public class SystemController {
 	@Autowired
 	SysMenuService menuService;
 
-	@Autowired
-	private UidGenerator uidGenerator;
+//	@Autowired
+//	private UidGenerator uidGenerator;
 
 	@GetMapping("/login")
 	public ModelAndView loginPage() {
 
-		System.err.println(uidGenerator.getUID());
-		System.err.println(uidGenerator.parseUID(uidGenerator.getUID()));
+//		System.err.println(uidGenerator.getUID());
+//		System.err.println(uidGenerator.parseUID(uidGenerator.getUID()));
 
 		return new ModelAndView("login");
 	}
