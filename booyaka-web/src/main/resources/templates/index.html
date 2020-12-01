@@ -127,9 +127,9 @@
 				<!-- Page Container START -->
 				<div class="page-container">
 					<!-- Content Wrapper START -->
-					<div class="main-content">
+					<div id="#content" class="main-content">
 						
-						
+						sdfsdf
 						
 						
 					</div>
@@ -137,11 +137,7 @@
 					<!-- Footer START -->
 					<footer class="footer">
 						<div class="footer-content">
-							<p class="m-b-0">Copyright © 2019 Theme_Nate. All rights reserved.</p>
-							<span>
-								<a href="http://www.themenate.net/enlink-bs/dist/index.html" class="text-gray m-r-15">Term &amp; Conditions</a>
-								<a href="http://www.themenate.net/enlink-bs/dist/index.html" class="text-gray">Privacy &amp; Policy</a>
-							</span>
+							<p class="m-b-0">Copyright © 2020 Theme_Nate. All rights reserved.</p>
 						</div>
 					</footer>
 					<!-- Footer END -->
@@ -150,7 +146,7 @@
 		</div>
 		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 		<script src="https://cdn.bootcdn.net/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.js"></script>
-		<script>
+		<script type="text/javascript">
 			$(function(){
 				$('.header .nav-left .desktop-toggle').on('click', () => {
 					$('.app').toggleClass("is-folded")
@@ -185,7 +181,20 @@
 						$($('.scale-left')[0]).addClass('show')
 					}
 				});
-			})
+			});
+			function loadPage(id,path){
+				console.log(".....")
+				console.log(id)
+				console.log(path)
+				$(id).load(path,function(response,status,xhr){
+					if(status=='error'){
+						if(xhr.status==403){
+							$(id).load(jQuery.parseJSON(response).object);
+						}
+					}
+					
+				});
+			}
 		</script>
 		</body>
 </html>
