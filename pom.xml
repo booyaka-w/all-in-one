@@ -20,6 +20,7 @@
 	</properties>
 	
 	<modules>
+		<module>booyaka-generator</module>
 		<module>booyaka-commons</module>
 		<module>booyaka-oauth2</module>
 		<module>booyaka-resource</module>
