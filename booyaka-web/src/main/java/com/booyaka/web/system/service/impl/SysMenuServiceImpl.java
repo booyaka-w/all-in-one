@@ -16,7 +16,7 @@ import com.github.pagehelper.PageInfo;
  * TODO 菜单信息表ServiceImpl
  *
  * @author booyaka
- * @date 2020-11-28 22:00:28
+ * @date 2020-12-01 13:45:31
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -57,20 +57,17 @@ public class SysMenuServiceImpl implements SysMenuService {
 	}
 
 	@Override
+	public List<SysMenu> queryButtonByUserId(String userId) {
+		return sysMenuMapper.queryButtonByUserId(userId);
+	}
+
+	@Override
 	public List<SysMenu> queryModelByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return sysMenuMapper.queryModelByUserId(userId);
 	}
 
 	@Override
 	public List<SysMenu> queryMenuByUserId(String userId, String menuId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<SysMenu> queryButtonByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return sysMenuMapper.queryMenuByUserId(userId);
 	}
 }

@@ -172,7 +172,7 @@ public class DefaultPlugin extends PluginAdapter {
 		select.addAttribute(new Attribute("id", "selectSelective"));
 		select.addAttribute(new Attribute("resultMap", "BaseResultMap"));
 		select.addAttribute(new Attribute("parameterType", introspectedTable.getBaseRecordType()));
-		select.addElement(new TextElement(" select * from " + introspectedTable.getFullyQualifiedTableNameAtRuntime()));
+		select.addElement(new TextElement(" SELECT * FROM " + introspectedTable.getFullyQualifiedTableNameAtRuntime()));
 		XmlElement include = new XmlElement("include");
 		include.addAttribute(new Attribute("refid", "SQL_WHERE"));
 		select.addElement(include);

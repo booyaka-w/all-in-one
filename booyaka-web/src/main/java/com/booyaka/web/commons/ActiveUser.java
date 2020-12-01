@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.booyaka.web.system.model.SysMenu;
-import com.booyaka.web.system.model.UserInfo;
+import com.booyaka.web.system.model.SysUserInfo;
 
 /**
  * @author booyaka
@@ -18,15 +18,15 @@ public class ActiveUser implements Serializable {
 	 */
 	private static final long serialVersionUID = 2056009758245387630L;
 
-	private UserInfo userInfo;
+	private SysUserInfo userInfo;
 
 	private List<SysMenu> menusList;
 
-	public UserInfo getUserInfo() {
+	public SysUserInfo getUserInfo() {
 		return userInfo;
 	}
 
-	public void setUserInfo(UserInfo userInfo) {
+	public void setUserInfo(SysUserInfo userInfo) {
 		this.userInfo = userInfo;
 	}
 

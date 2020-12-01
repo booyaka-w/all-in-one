@@ -8,7 +8,7 @@ import java.util.List;
  * TODO 角色信息表Service
  *
  * @author booyaka
- * @date 2020-11-28 22:00:52
+ * @date 2020-12-01 13:45:38
  */
 public interface SysRoleService {
     /**

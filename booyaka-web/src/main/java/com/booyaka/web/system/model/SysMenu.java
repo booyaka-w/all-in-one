@@ -10,7 +10,7 @@ import com.booyaka.BaseModel;
  * TODO 菜单信息表Model
  *
  * @author booyaka
- * @date 2020-11-28 22:00:28
+ * @date 2020-12-01 13:45:31
  */
 public class SysMenu extends BaseModel {
 	/**
@@ -280,5 +280,4 @@ public class SysMenu extends BaseModel {
 		sb.append("]");
 		return sb.toString();
 	}
-
 }

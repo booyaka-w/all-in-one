@@ -8,7 +8,7 @@ import com.booyaka.BaseModel;
  * TODO 角色菜单关系表Model
  *
  * @author booyaka
- * @date 2020-11-28 22:01:03
+ * @date 2020-12-01 13:45:45
  */
 public class SysRoleMenu extends BaseModel {
 	/**

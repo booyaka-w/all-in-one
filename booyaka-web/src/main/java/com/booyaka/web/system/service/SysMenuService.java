@@ -9,7 +9,7 @@ import com.github.pagehelper.PageInfo;
  * TODO 菜单信息表Service
  *
  * @author booyaka
- * @date 2020-11-28 22:00:28
+ * @date 2020-12-01 13:45:31
  */
 public interface SysMenuService {
 	/**
@@ -63,9 +63,9 @@ public interface SysMenuService {
 	 */
 	PageInfo<SysMenu> querySelectiveForPage(SysMenu sysMenu);
 
+	List<SysMenu> queryButtonByUserId(String userId);
+
 	List<SysMenu> queryModelByUserId(String userId);
 
 	List<SysMenu> queryMenuByUserId(String userId, String menuId);
-
-	List<SysMenu> queryButtonByUserId(String userId);
 }

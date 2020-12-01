@@ -33,7 +33,6 @@ mybatis:
   type-aliases-package: com.booyaka.web.*.model
   mapper-locations:
   - com/booyaka/web/*/mapper/*.xml
-  - classpath:/META-INF/mybatis/mapper/M_WORKER*.xml
 
 pagehelper:
   helper-dialect: mysql
@@ -41,3 +40,7 @@ pagehelper:
   support-methods-arguments: true
   params: count=countSql
   page-size-zero: true
+
+logging:
+  level:
+    '[com.booyaka.web,org.apache.shiro]': debug

@@ -15,7 +15,6 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +22,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.booyaka.web.commons.ActiveUser;
 import com.booyaka.web.system.model.SysMenu;
 import com.booyaka.web.system.model.SysRole;
+import com.booyaka.web.system.model.SysUserInfo;
 import com.booyaka.web.system.model.SysUserRole;
-import com.booyaka.web.system.model.UserInfo;
 import com.booyaka.web.system.service.SysMenuService;
 import com.booyaka.web.system.service.SysRoleService;
+import com.booyaka.web.system.service.SysUserInfoService;
 import com.booyaka.web.system.service.SysUserRoleService;
-import com.booyaka.web.system.service.UserInfoService;
 
 /**
  * shiro权限认证
@@ -38,7 +37,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	private static Logger LOGGER = LoggerFactory.getLogger(ShiroRealm.class);
 
 	@Autowired
-	UserInfoService userInfoService;
+	SysUserInfoService userInfoService;
 
 	@Autowired
 	SysUserRoleService userRoleService;
@@ -57,12 +56,10 @@ public class ShiroRealm extends AuthorizingRealm {
 			throws AuthenticationException {
 		LOGGER.info("-----------------------------------Shiro开始登录认证-------------------------------------------");
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-
-		UserInfo userInfo = userInfoService.queryByUserName(token.getUsername());
+		SysUserInfo userInfo = userInfoService.queryByUserName(token.getUsername());
 		if (userInfo == null) {
 			throw new UnknownAccountException();
 		}
-
 		SysUserRole userRole = new SysUserRole();
 		userRole.setSysUserId(userInfo.getUserId());
 		List<SysUserRole> userRoleList = userRoleService.querySelective(userRole);
@@ -74,8 +71,7 @@ public class ShiroRealm extends AuthorizingRealm {
 				}
 			}
 		}
-		return new SimpleAuthenticationInfo(userInfo.getUserName(), userInfo.getPassword(), ByteSource.Util.bytes(""),
-				this.getName());
+		return new SimpleAuthenticationInfo(userInfo.getUserName(), userInfo.getPassword(), null, this.getName());
 	}
 
 	/**

@@ -20,9 +20,9 @@ import com.booyaka.ResponseResult;
 import com.booyaka.emuns.ResponseEnum;
 import com.booyaka.web.commons.ActiveUser;
 import com.booyaka.web.system.model.SysMenu;
-import com.booyaka.web.system.model.UserInfo;
+import com.booyaka.web.system.model.SysUserInfo;
 import com.booyaka.web.system.service.SysMenuService;
-import com.booyaka.web.system.service.UserInfoService;
+import com.booyaka.web.system.service.SysUserInfoService;
 
 /**
  * TODO Controller
@@ -35,20 +35,13 @@ import com.booyaka.web.system.service.UserInfoService;
 public class SystemController {
 
 	@Autowired
-	UserInfoService userInfoService;
+	SysUserInfoService userInfoService;
 
 	@Autowired
 	SysMenuService menuService;
 
-//	@Autowired
-//	private UidGenerator uidGenerator;
-
 	@GetMapping("/login")
 	public ModelAndView loginPage() {
-
-//		System.err.println(uidGenerator.getUID());
-//		System.err.println(uidGenerator.parseUID(uidGenerator.getUID()));
-
 		return new ModelAndView("login");
 	}
 
@@ -60,7 +53,7 @@ public class SystemController {
 	@PostMapping("/dologin")
 	public ResponseResult doLogin(String userName, String password) {
 		ResponseResult result = new ResponseResult(ResponseEnum.SUCCESS);
-		UserInfo userInfo = userInfoService.queryByUserName(userName);
+		SysUserInfo userInfo = userInfoService.queryByUserName(userName);
 		try {
 			Subject subject = SecurityUtils.getSubject();
 			UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
