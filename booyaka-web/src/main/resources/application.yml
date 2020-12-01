@@ -43,4 +43,4 @@ pagehelper:
 
 logging:
   level:
-    '[com.booyaka.web,org.apache.shiro]': debug
+    '[com.booyaka.web]': debug
