@@ -54,7 +54,6 @@ public class MenuController {
 			map.put("version", temp.getVersion());
 			listMap.add(map);
 		}
-
 		return JSON.toJSONString(listMap);
 	}
 }

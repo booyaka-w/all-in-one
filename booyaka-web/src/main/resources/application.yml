@@ -38,7 +38,7 @@ mybatis:
 pagehelper:
   helper-dialect: mysql
   reasonable: true
-  support-methods-arguments: true
+  support-methods-arguments: false
   params: count=countSql
   page-size-zero: true
 
