@@ -228,8 +228,8 @@
       </if>
     </where>
   </sql>
-  <select id="selectSelective" parameterType="com.booyaka.web.system.model.SysMenu" resultMap="BaseResultMap">
-     select * from sys_menu
+  <select id="querySelective" parameterType="com.booyaka.web.system.model.SysMenu" resultMap="BaseResultMap">
+     SELECT * FROM sys_menu
     <include refid="SQL_WHERE" />
   </select>
   

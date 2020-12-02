@@ -5,7 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Enlink</title>
 		<link rel="shortcut icon" href="../images/logo/favicon.png">
-		<link href="../css/app.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/app.min.css">
+		<link rel="stylesheet" href="../plugin/bootstrap-table-1.18.0/bootstrap-table.css">
+		<link rel="stylesheet" href="../plugin/jquery-treegrid-0.3.0/css/jquery.treegrid.css">
 	</head>
 	<body>
 		<div class="card">
@@ -14,40 +16,16 @@
 				<p>Using the most basic table markup, here’s how <code>.table</code>-based tables look in Bootstrap.</p>
 				<div class="m-t-25">
 					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">First</th>
-									<th scope="col">Last</th>
-									<th scope="col">Handle</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td>@mdo</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td>@fat</td>
-								</tr>
-								<tr>
-									<th scope="row">3</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>@twitter</td>
-								</tr>
-							</tbody>
+						<table id="table" class="table">
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="../js/system/menu-page.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-table-1.18.0/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-table-1.18.0/bootstrap-table.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/jquery-treegrid-0.3.0/js/jquery.treegrid.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-table-1.18.0/bootstrap-table-treegrid.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../js/system/menu-page.js"></script>
 	</body>
 </html>
