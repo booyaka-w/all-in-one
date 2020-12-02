@@ -11,7 +11,7 @@ $(function() {
 		cache: false,
 		detailView : false,
 		detailViewIcon: false,
-		detailViewByClick: false,
+		detailViewByClick: true,
 		buttonsClass:'info',
 		idField : 'id',
 		treeShowField : 'name',
