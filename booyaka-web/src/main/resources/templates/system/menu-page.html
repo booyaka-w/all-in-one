@@ -15,30 +15,34 @@
 				<h4>Basic Usage</h4>
 				<div id="toolbar">
 					<div class="form-inline">
-					    <div class="form-group">
-					    	<span>账号: </span>
-					      	<input name="userName" class="form-control" type="text" placeholder="账号" style="width: 220px">
-					    </div>
-					    <div class="form-group m-l-5">
-					    	<span>电话: </span>
-					      	<input name="userPhone" class="form-control" type="text" placeholder="电话" style="width: 220px">
-					    </div>
-					   	<div class="form-group m-l-5">
-					    	<span>所属平台: </span>
-					    	 <t:select name="userSubordinate" param="SUBORDINATE" class="form-control" data-empty="true"></t:select>
-					    </div>
-					    <div class="form-group m-l-5">
-					      	<span>用户状态: </span>
-					      	<t:select name="userStatus" param="STATUS" class="form-control" data-empty="true"></t:select>
-					    </div>
-					    <div class="form-group m-l-5">
-					      	<span>创建时间: </span>
-				            <input name="time" type="text" class="form-control date-select" readonly="readonly" placeholder="时间区间" style="width:195px;background-color: white;">
-				            <input id="startTimeStr" name="startTimeStr" type="hidden" >
-				            <input id="endTimeStr" name="endTimeStr" type="hidden">
-					    </div>
-				    	<button class="btn btn-info m-l-5" type="button" id="search" title="搜索"><i class="fa fa-search"></i> 搜索</button>
-				    	<button class="btn btn-info m-l-5" type="button" onclick="showModal()" title="添加"><i class="fa fa-plus"></i> 添加</button>
+						<div role="group" class="input-group mb-2 mr-sm-2 mb-sm-0">
+							<div class="input-group-prepend">
+								<div class="input-group-text">账号</div>
+							</div>
+							<input id="inline-form-input-username2" type="text" placeholder="账号" class="form-control">
+						</div>
+						<div role="group" class="input-group mb-2 mr-sm-2 mb-sm-0">
+							<div class="input-group-prepend">
+								<div class="input-group-text">电话</div>
+							</div>
+							<input id="userPhone" name="userPhone" type="text" placeholder="电话" class="form-control">
+						</div>
+						<div role="group" class="input-group mb-2 mr-sm-2 mb-sm-0">
+							<div class="input-group-prepend">
+								<div class="input-group-text">用户状态</div>
+							</div>
+							<t:select name="userStatus" param="STATUS" class="form-control" data-empty="true"></t:select>
+						</div>
+						<div role="group" class="input-group mb-2 mr-sm-2 mb-sm-0">
+							<div class="input-group-prepend">
+								<div class="input-group-text">创建时间</div>
+							</div>
+							<input name="time" type="text" class="form-control date-select" readonly="readonly" placeholder="时间区间" style="background-color: white;">
+							<input id="startTimeStr" name="startTimeStr" type="hidden">
+							<input id="endTimeStr" name="endTimeStr" type="hidden">
+						</div>
+						<button class="btn btn-info m-l-5" type="button" id="search" title="搜索"><i class="fa fa-search"></i> 搜索</button>
+						<button class="btn btn-info m-l-5" type="button" onclick="showModal()" title="添加"><i class="fa fa-plus"></i> 添加</button>
 					</div>
 				</div>
 				<div class="m-t-25">
