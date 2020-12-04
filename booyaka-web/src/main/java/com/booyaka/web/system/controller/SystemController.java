@@ -50,6 +50,11 @@ public class SystemController {
 		return new ModelAndView("index");
 	}
 
+	@GetMapping("/index2")
+	public ModelAndView indexPage2() {
+		return new ModelAndView("index2");
+	}
+
 	@PostMapping("/dologin")
 	public ResponseResult doLogin(String userName, String password) {
 		ResponseResult result = new ResponseResult(ResponseEnum.SUCCESS);

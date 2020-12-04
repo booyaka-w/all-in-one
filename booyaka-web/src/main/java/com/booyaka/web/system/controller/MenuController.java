@@ -35,6 +35,11 @@ public class MenuController {
 		return new ModelAndView("/system/menu-page");
 	}
 
+	@GetMapping("/table")
+	public ModelAndView tablePage() {
+		return new ModelAndView("/system/table");
+	}
+
 	@GetMapping("/page/data")
 	public String menuListData(SysMenu sysMenu) {
 		List<SysMenu> list = menuService.querySelective(sysMenu);
