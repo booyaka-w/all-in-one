@@ -4,7 +4,27 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>layout 后台大布局 - Layui</title>
-		<link rel="stylesheet" href="../layui-v2.5.7/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-4.5.0/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-table-1.18.0/bootstrap-table.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/layui-v2.5.7/css/layui.css">
+		<style type="text/css">
+			a:link {
+				text-decoration: none;
+				/* 指正常的未被访问过的链接*/
+			}
+			a:visited {
+				text-decoration: none;
+				/*指已经访问过的链接*/
+			}
+			a:hover {
+				text-decoration: none;
+				/*指鼠标在链接*/
+			}
+			a:active {
+				text-decoration: none;
+				/* 指正在点的链接*/
+			}
+		</style>
 	</head>
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
@@ -96,8 +116,11 @@
 				© layui.com - 底部固定区域
 			</div>
 		</div>
-		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-		<script type="text/javascript" charset="utf-8" src="../layui-v2.5.7/layui.js"></script>
+		<script type="text/javascript" charset="utf-8" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-4.5.0/js/bootstrap.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-table-1.18.0/bootstrap-table.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/laydate-v5.0.9/laydate.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/layui-v2.5.7/layui.js"></script>
 		<script type="text/javascript">
 			function loadPage(){
 				$("#layui-body").load("/system/menu/table");

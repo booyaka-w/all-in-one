@@ -5,15 +5,63 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" href="../layui-v2.5.7/css/layui.css" media="all">
 	</head>
 	<body>
 		<div class="layuimini-container">
-			<div class="layuimini-main">
-				<blockquote class="layui-elem-quote">
-					Layui的树形表格treeTable，支持异步加载(懒加载)、复选框联动、折叠状态记忆
-				</blockquote>
+			<blockquote class="layui-elem-quote">
+				Layui的树形表格treeTable，支持异步加载(懒加载)、复选框联动、折叠状态记忆
+			</blockquote>
+			<div class="form-row mb-2">
+				<div class="input-group mb-2 col">
+					<div class="input-group-prepend">
+						<div class="input-group-text">用户职业</div>
+					</div>
+					<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+				</div>
+				<div class="input-group mb-2 col">
+					<div class="input-group-prepend">
+						<div class="input-group-text">用户职业</div>
+					</div>
+					<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+				</div>
+				<div class="input-group mb-2 col-4">
+					<div class="input-group-prepend">
+						<div class="input-group-text">用户职业</div>
+					</div>
+					<input type="text" class="form-control bg-white" id="laydate1" readonly="readonly" placeholder="Username">
+				</div>
+				<div class="input-group mb-2 col">
+					<div class="input-group-prepend">
+						<div class="input-group-text">用户职业</div>
+					</div>
+					<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+						<option selected>Choose...</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+				</div>
+				<div class="input-group mb-2 col">
+					<button type="button" class="btn btn-outline-success mr-1">success</button>
+					<button type="button" class="btn btn-outline-success">success</button>
+				</div>
 			</div>
+			<table id="table" data-toggle="table" data-url="json/data1.json">
+				<thead>
+					<tr>
+						<th data-field="id">ID</th>
+						<th data-field="name">Item Name</th>
+						<th data-field="price">Item Price</th>
+					</tr>
+				</thead>
+			</table>
 		</div>
+		<script type="text/javascript">
+			laydate.render({
+				elem: '#laydate1',
+				type: 'datetime',
+				range: true
+			});
+		</script>
 	</body>
 </html>
