@@ -26,6 +26,7 @@
 		<module>booyaka-resource</module>
 		<module>booyaka-gateway</module>
 		<module>booyaka-web</module>
+		<module>booyaka-webflux</module>
 	</modules>
 
 	<dependencies>
