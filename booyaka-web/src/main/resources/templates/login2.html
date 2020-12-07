@@ -2,13 +2,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>后台管理-登陆</title>
+		<title>后台管理</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta http-equiv="Access-Control-Allow-Origin" content="*">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="plugin/parsley-2.9.2/parsley.css"/>
 		<style type="text/css">
 			.main-body {
 				top: 50%;
@@ -295,28 +296,25 @@
 		<div class="main-body">
 			<div class="login-main">
 				<div class="login-top">
-					<span>LayuiMini后台登录</span>
+					<span>后台登录</span>
 					<span class="bg1"></span>
 					<span class="bg2"></span>
 				</div>
-				<form class="layui-form login-bottom">
+				<form class="layui-form login-bottom" id="loginForm" data-parsley-validate="validate">
 					<div class="center">
 						<div class="item">
 							<span class="icon icon-2"></span>
-							<input type="text" name="username" placeholder="请输入登录账号" maxlength="24" />
+							<input type="text" name="userName" placeholder="请输入登录账号" maxlength="24" required="required" data-parsley-required-message="用户名不可为空"/>
 						</div>
-
 						<div class="item">
 							<span class="icon icon-3"></span>
-							<input type="password" name="password" placeholder="请输入密码" maxlength="20">
+							<input type="password" name="password" placeholder="请输入密码" maxlength="20" required="required" data-parsley-required-message="密码不可为空">
 							<span class="bind-password icon icon-4"></span>
 						</div>
-
-						<div id="validatePanel" class="item" style="width: 137px;">
-							<input type="text" name="captcha" placeholder="请输入验证码" maxlength="4">
-							<img id="refreshCaptcha" class="validateImg" src="../images/captcha.jpg">
-						</div>
-
+<!-- 						<div id="validatePanel" class="item" style="width: 137px;"> -->
+<!-- 							<input type="text" name="captcha" placeholder="请输入验证码" maxlength="4"> -->
+<!-- 							<img id="refreshCaptcha" class="validateImg" src="../images/captcha.jpg"> -->
+<!-- 						</div> -->
 					</div>
 					<div class="tip">
 						<span class="icon-nocheck"></span>
@@ -324,7 +322,7 @@
 						<a href="javascript:" class="forget-password">忘记密码？</a>
 					</div>
 					<div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
-						<button class="login-btn" >立即登录</button>
+						<button class="login-btn" id="loginBtn">立即登录</button>
 					</div>
 				</form>
 			</div>
@@ -332,5 +330,51 @@
 		<div class="footer">
 			©版权所有 2014-2018 叁贰柒工作室<span class="padding-5">|</span><a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备16006642号-2</a>
 		</div>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/jquery.form.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/parsley-2.9.2/parsley.js"></script>
+		<script type="text/javascript">
+			$('.bind-password').on('click', function() {
+				if ($(this).hasClass('icon-5')) {
+					$(this).removeClass('icon-5');
+					$("input[name='password']").attr('type', 'password');
+				} else {
+					$(this).addClass('icon-5');
+					$("input[name='password']").attr('type', 'text');
+				}
+			});
+			$('.icon-nocheck').on('click', function() {
+				if ($(this).hasClass('icon-check')) {
+					$(this).removeClass('icon-check');
+				} else {
+					$(this).addClass('icon-check');
+				}
+			});
+			$("#loginBtn").click(function() {
+				var status = $("#loginForm").parsley().validate();
+				if(status){
+					var object= {
+		            url:"/system/dologin",
+	　　　　　　 		type:"post",
+	　　　　　　  		restForm:true,
+	　　　　　　  		timeout:6000,
+	        		beforeSend: function () {
+	       		        $("#loginBtn").attr({ disabled: "disabled" });
+	       		    },
+		　　　　　　  	success:function(data){
+		　　　　　　  		console.log(data)
+		　　　　　　  		if(data.state){
+		　　　　　　  			window.location.href="/system/index2";
+		　　　　　　  		}
+	　　　　　　  		},
+		　　　　　　  	complete: function () {
+							$("#loginBtn").removeAttr("disabled");
+				    	},
+		                error:function(){}
+					}
+					$("#loginForm").ajaxSubmit(object);
+				}
+			})
+		</script>
 	</body>
 </html>
