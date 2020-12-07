@@ -3,6 +3,10 @@ $(function() {
 	$table.bootstrapTable({
 		url : '/system/menu/page/data',
 		toolbar : '#toolbar',
+		showButtonText : true,
+		showRefresh : true,
+		cache: false,
+		buttonsClass:'info',
 		idField : 'id',
 		treeShowField : 'name',
 		parentIdField : 'pid',
