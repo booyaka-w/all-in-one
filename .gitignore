@@ -32,6 +32,11 @@
 /booyaka-web/.classpath
 /booyaka-web/.project
 
+/booyaka-webflux/.settings
+/booyaka-webflux/target
+/booyaka-webflux/.classpath
+/booyaka-webflux/.project
+
 /booyaka-commons/.settings
 /booyaka-commons/target
 /booyaka-commons/.classpath
