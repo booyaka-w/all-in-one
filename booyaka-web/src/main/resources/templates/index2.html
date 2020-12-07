@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -41,66 +41,20 @@
 							<dd><a href="">安全设置</a></dd>
 						</dl>
 					</li>
-					<li class="layui-nav-item"><a href="">退了</a></li>
+					<li class="layui-nav-item"><a href="/system/logout">退了</a></li>
 				</ul>
 			</div>
-
 			<div class="layui-side layui-side-menu layui-bg-black">
 				<div class="layui-side-scroll">
-					<div class="layui-logo" lay-href="home/console.html">
-						<span>layuiAdmin</span>
-					</div>
-			
-					<ul class="layui-nav layui-nav-tree" lay-shrink="all">
-						<li data-name="home" class="layui-nav-item layui-nav-itemed">
-							<a href="javascript:;" lay-tips="主页" lay-direction="2">
+					<ul class="layui-nav layui-nav-tree" >
+						<li class="layui-nav-item" th:each="module:${session.activeUser.menusList}">
+							<a href="javascript:;" >
 								<i class="layui-icon layui-icon-home"></i>
-								<cite>主页</cite>
+								<cite th:text="${module.menuName}">主页</cite>
 							</a>
 							<dl class="layui-nav-child">
-								<dd data-name="console" class="layui-this">
-									<a href="javascript:;">控制台</a>
-								</dd>
-								<dd data-name="console">
-									<a href="javascript:;" onclick="loadPage()">主页一</a>
-								</dd>
-								<dd data-name="console">
-									<a href="javascript:;">主页二</a>
-								</dd>
-							</dl>
-						</li>
-						<li data-name="template" class="layui-nav-item">
-							<a href="javascript:;" lay-tips="页面" lay-direction="2">
-								<i class="layui-icon layui-icon-template"></i>
-								<cite>页面</cite>
-							</a>
-							<dl class="layui-nav-child">
-								<dd><a href="javascript:;">个人主页</a></dd>
-								<dd><a href="javascript:;">通讯录</a></dd>
-								<dd><a href="javascript:;">客户列表</a></dd>
-								<dd><a href="javascript:;">商品列表</a></dd>
-								<dd><a href="javascript:;">留言板</a></dd>
-								<dd><a href="javascript:;">搜索结果</a></dd>
-								<dd><a href="javascript:;">注册</a></dd>
-								<dd><a href="javascript:;">登入</a></dd>
-								<dd><a href="javascript:;">忘记密码</a></dd>
-								<dd><a href="javascript:;">404页面不存在</a></dd>
-								<dd><a href="javascript:;">错误提示</a></dd>
-							</dl>
-						</li>
-						<li data-name="user" class="layui-nav-item">
-							<a href="javascript:;" lay-tips="用户" lay-direction="2">
-								<i class="layui-icon layui-icon-user"></i>
-								<cite>用户</cite>
-							</a>
-							<dl class="layui-nav-child">
-								<dd>
-									<a href="javascript:;">网站用户</a>
-								</dd>
-								<dd>
-									<a href="javascript:;">后台管理员</a>
-								</dd>
-								<dd>
+								<dd th:each="menus:${module.childList}" th:onclick="loadPage('#layui-body',[[${menus.menuPath}]])">
+									<a href="javascript:void(0);" th:text="${menus.menuName}"></a>
 								</dd>
 							</dl>
 						</li>
@@ -122,10 +76,13 @@
 		<script type="text/javascript" charset="utf-8" src="../plugin/laydate-v5.0.9/laydate.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../plugin/layui-v2.5.7/layui.js"></script>
 		<script type="text/javascript">
-			function loadPage(){
-				$("#layui-body").load("/system/menu/table");
+			function loadPage(selector, path) {
+				$(selector).load(path,function(response,status,xhr){
+					console.log(response)
+					console.log(status)
+					console.log(xhr)
+				})
 			}
-			//JavaScript代码区域
 			layui.use('element', function() {
 				var element = layui.element;
 			});
