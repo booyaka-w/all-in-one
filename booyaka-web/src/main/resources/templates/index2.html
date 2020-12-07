@@ -29,7 +29,7 @@
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
 			<div class="layui-header">
-				<div class="layui-logo">layui 后台布局</div>
+				<div class="layui-logo">管理后台</div>
 				<ul class="layui-nav layui-layout-right">
 					<li class="layui-nav-item">
 						<a href="javascript:;">
@@ -50,7 +50,7 @@
 						<li class="layui-nav-item" th:each="module:${session.activeUser.menusList}">
 							<a href="javascript:;" >
 								<i class="layui-icon layui-icon-home"></i>
-								<cite th:text="${module.menuName}">主页</cite>
+								<cite th:text="${module.menuName}"></cite>
 							</a>
 							<dl class="layui-nav-child">
 								<dd th:each="menus:${module.childList}" th:onclick="loadPage('#layui-body',[[${menus.menuPath}]])">
@@ -62,15 +62,13 @@
 				</div>
 			</div>
 			<div id="layui-body" class="layui-body" style="padding: 15px;">
-				<!-- 内容主体区域 -->
 				内容主体区域
 			</div>
 			<div class="layui-footer">
-				<!-- 底部固定区域 -->
 				© layui.com - 底部固定区域
 			</div>
 		</div>
-		<script type="text/javascript" charset="utf-8" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/jquery-3.5.1.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-4.5.0/js/bootstrap.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-table-1.18.0/bootstrap-table.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../plugin/laydate-v5.0.9/laydate.js"></script>
