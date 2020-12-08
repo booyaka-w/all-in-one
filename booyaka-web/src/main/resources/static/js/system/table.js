@@ -115,6 +115,6 @@ $('#refresh').click(function() {
 
 laydate.render({
 	elem: '#time',
-	type: 'datetime',
-	range: true
+	/*type: 'date',*/
+	range:'~'
 });
