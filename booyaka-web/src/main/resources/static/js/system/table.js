@@ -6,7 +6,7 @@ $(function() {
 		showButtonText : true,
 		showRefresh : true,
 		cache: false,
-		buttonsClass:'info',
+		buttonsClass:'outline-info',
 		idField : 'id',
 		treeShowField : 'name',
 		parentIdField : 'pid',
