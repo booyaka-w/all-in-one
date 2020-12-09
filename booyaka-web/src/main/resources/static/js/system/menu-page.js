@@ -119,3 +119,23 @@ laydate.render({
 	/*type: 'date',*/
 	range:'~'
 });
+
+/**
+ * 折叠
+ */
+$('#collapsed').click(function() {
+	$table.treegrid({
+		treeColumn : 0,
+		initialState: 'collapsed',
+	});
+})
+
+/**
+ * 展开
+ */
+$('#expanded').click(function() {
+	$table.treegrid({
+		treeColumn : 0,
+		initialState: 'expanded',
+	});
+})
