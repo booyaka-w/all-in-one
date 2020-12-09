@@ -86,7 +86,7 @@ public class ShiroRealm extends AuthorizingRealm {
 		List<SysMenu> buttonList = msenuService.queryButtonByUserId(activeUser.getUserInfo().getUserId());
 		if (buttonList.size() > 0) {
 			for (SysMenu sysMenu : buttonList) {
-				buttenPermissions.add(sysMenu.getMenuPath());
+				buttenPermissions.add(sysMenu.getResource());
 			}
 		}
 		LOGGER.info("-----------------------------------添加按钮权限-------------------------------------------");

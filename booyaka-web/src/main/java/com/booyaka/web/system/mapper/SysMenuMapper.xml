@@ -279,7 +279,6 @@
 	WHERE
 		menu_status = 1 
 		AND menu_type = 3 
-		AND parent_id= #{param2} 
 		AND menu_id IN (
 		SELECT
 			sys_menu_id 

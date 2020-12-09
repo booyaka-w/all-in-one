@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80022
+ Source Server Version : 80021
  Source Host           : localhost:3306
  Source Schema         : booyaka
 
  Target Server Type    : MySQL
- Target Server Version : 80022
+ Target Server Version : 80021
  File Encoding         : 65001
 
- Date: 01/12/2020 20:58:25
+ Date: 09/12/2020 11:32:53
 */
 
 SET NAMES utf8mb4;
@@ -92,8 +92,8 @@ CREATE TABLE `oauth_approvals`  (
   `clientId` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `scope` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `expiresAt` timestamp(0) NULL DEFAULT NULL,
-  `lastModifiedAt` timestamp(0) NULL DEFAULT NULL
+  `expiresAt` timestamp NULL DEFAULT NULL,
+  `lastModifiedAt` timestamp NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -188,8 +188,8 @@ CREATE TABLE `sys_menu`  (
   `resource` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '访问资源',
   `create_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '创建人',
   `update_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '修改人',
-  `create_date` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
-  `update_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `create_date` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `version` int NULL DEFAULT 0 COMMENT '版本号',
   PRIMARY KEY (`menu_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单信息表' ROW_FORMAT = DYNAMIC;
@@ -197,21 +197,21 @@ CREATE TABLE `sys_menu`  (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES ('650454045105848320', '系统管理', 'mdi mdi-view-dashboard', NULL, 1, 1, 1, 1, '0', '/a,/b', '', '650454045110042635', '2019-12-06 14:41:09', '2019-12-20 23:05:47', 0);
-INSERT INTO `sys_menu` VALUES ('650454045110042624', '菜单管理', '', '/system/menu/page', 1, 2, 1, 0, '650454045105848320', '/a,/b', '', '650454045110042635', '2019-12-06 14:41:09', '2020-12-01 20:10:13', 2);
-INSERT INTO `sys_menu` VALUES ('650454045110042625', '角色管理', ' ', '/role/list/url', 1, 2, 1, 0, '650454045105848320', '/a,/b', '', ' ', '2019-12-06 14:41:09', '2019-12-27 11:12:13', 0);
-INSERT INTO `sys_menu` VALUES ('650454045110042626', '用户管理', ' ', '/user/list/url', 1, 2, 1, 0, '650454045105848320', '/a,/b', '', ' ', '2019-12-06 14:41:09', '2019-12-27 11:12:13', 0);
-INSERT INTO `sys_menu` VALUES ('650454045110042627', '添加模块', ' ', 'model-add', 1, 3, 1, 0, '650454045110042624', 'model-add', '', '650454045110042635', '2019-12-06 14:41:09', '2019-12-27 11:12:13', 13);
-INSERT INTO `sys_menu` VALUES ('660076317131145216', '编辑模块', '', 'model-edit', 1, 3, 1, 0, '650454045110042624', 'model-edit', '650454045110042635', '', '2019-12-27 11:07:37', NULL, 0);
-INSERT INTO `sys_menu` VALUES ('660076495942713344', '添加菜单', '', 'menu-add', 1, 3, 1, 0, '650454045110042624', 'menu-add', '650454045110042635', '', '2019-12-27 11:08:20', NULL, 0);
-INSERT INTO `sys_menu` VALUES ('660076569473056768', '编辑菜单', '', 'menu-edit', 1, 3, 1, 0, '650454045110042624', 'menu-edit', '650454045110042635', '', '2019-12-27 11:08:37', NULL, 0);
-INSERT INTO `sys_menu` VALUES ('660076719910158336', '添加按钮', '', 'button-add', 1, 3, 1, 0, '650454045110042624', 'button-add', '650454045110042635', '', '2019-12-27 11:09:13', NULL, 0);
-INSERT INTO `sys_menu` VALUES ('660076778387144704', '编辑按钮', '', 'button-edit', 1, 3, 1, 0, '650454045110042624', 'button-edit', '650454045110042635', '', '2019-12-27 11:09:27', NULL, 0);
+INSERT INTO `sys_menu` VALUES ('650454045105848320', '系统管理', 'mdi mdi-view-dashboard', NULL, 1, 1, 1, 1, '0', NULL, '', '650454045110042635', '2019-12-06 14:41:09', '2020-12-09 11:31:17', 0);
+INSERT INTO `sys_menu` VALUES ('650454045110042624', '菜单管理', '', '/system/menu/page', 1, 2, 1, 0, '650454045105848320', 'menu-page', '', '650454045110042635', '2019-12-06 14:41:09', '2020-12-09 11:06:46', 2);
+INSERT INTO `sys_menu` VALUES ('650454045110042625', '角色管理', ' ', '/role/list/url', 1, 2, 1, 0, '650454045105848320', 'role-page', '', ' ', '2019-12-06 14:41:09', '2020-12-09 11:06:57', 0);
+INSERT INTO `sys_menu` VALUES ('650454045110042626', '用户管理', ' ', '/user/list/url', 1, 2, 1, 0, '650454045105848320', 'user-page', '', ' ', '2019-12-06 14:41:09', '2020-12-09 11:07:08', 0);
+INSERT INTO `sys_menu` VALUES ('650454045110042627', '添加模块', ' ', 'model-add', 1, 3, 1, 0, '650454045110042624', 'model-add', '', '650454045110042635', '2019-12-06 14:41:09', '2020-12-02 13:35:51', 13);
+INSERT INTO `sys_menu` VALUES ('660076317131145216', '编辑模块', '', 'model-edit', 1, 3, 1, 0, '650454045110042624', 'model-edit', '650454045110042635', '', '2019-12-27 11:07:37', '2020-12-02 13:35:51', 0);
+INSERT INTO `sys_menu` VALUES ('660076495942713344', '添加菜单', '', 'menu-add', 1, 3, 1, 0, '650454045110042624', 'menu-add', '650454045110042635', '', '2019-12-27 11:08:20', '2020-12-02 13:35:51', 0);
+INSERT INTO `sys_menu` VALUES ('660076569473056768', '编辑菜单', '', 'menu-edit', 1, 3, 1, 0, '650454045110042624', 'menu-edit', '650454045110042635', '', '2019-12-27 11:08:37', '2020-12-02 13:35:51', 0);
+INSERT INTO `sys_menu` VALUES ('660076719910158336', '添加按钮', '', 'button-add', 1, 3, 1, 0, '650454045110042624', 'button-add', '650454045110042635', '', '2019-12-27 11:09:13', '2020-12-02 13:35:51', 0);
+INSERT INTO `sys_menu` VALUES ('660076778387144704', '编辑按钮', '', 'button-edit', 1, 3, 1, 0, '650454045110042624', 'button-edit', '650454045110042635', '', '2019-12-27 11:09:27', '2020-12-02 13:35:51', 0);
 INSERT INTO `sys_menu` VALUES ('660076990891556864', '添加角色', '', 'role-add', 1, 3, 1, 0, '650454045110042625', 'role-add', '650454045110042635', '', '2019-12-27 11:10:18', NULL, 0);
 INSERT INTO `sys_menu` VALUES ('660077041785241600', '编辑角色', '', 'role-edit', 1, 3, 1, 0, '650454045110042625', 'role-edit', '650454045110042635', '', '2019-12-27 11:10:30', NULL, 0);
 INSERT INTO `sys_menu` VALUES ('660077184991363072', '添加用户', '', 'user-add', 1, 3, 1, 0, '650454045110042626', 'user-add', '650454045110042635', '', '2019-12-27 11:11:04', NULL, 0);
 INSERT INTO `sys_menu` VALUES ('660077252028923904', '编辑用户', '', 'user-edit', 1, 3, 1, 0, '650454045110042626', 'user-edit', '650454045110042635', '', '2019-12-27 11:11:20', NULL, 0);
-INSERT INTO `sys_menu` VALUES ('661602207992381440', '操作日志', '', '/log/list/url', 1, 2, 1, 0, '650454045105848320', NULL, '650454045110042635', '', '2019-12-31 16:10:58', NULL, 0);
+INSERT INTO `sys_menu` VALUES ('661602207992381440', '操作日志', '', '/system/menu/table', 1, 3, 1, 0, '650454045105848320', 'log-page', '650454045110042635', '', '2019-12-31 16:10:58', '2020-12-09 11:31:27', 0);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -223,9 +223,9 @@ CREATE TABLE `sys_role`  (
   `role_status` int NULL DEFAULT 1 COMMENT '是否可用,1：可用，2不可用',
   `role_subordinate` int NULL DEFAULT NULL COMMENT '角色所属',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
-  `create_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_user` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建人',
-  `update_date` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `update_user` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '修改人',
   `version` int NULL DEFAULT 0 COMMENT '版本号',
   PRIMARY KEY (`role_id`) USING BTREE
@@ -244,9 +244,9 @@ CREATE TABLE `sys_role_menu`  (
   `role_menu_id` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键ID',
   `sys_role_id` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限ID',
   `sys_menu_id` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '菜单ID',
-  `create_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_user` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建人',
-  `update_date` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `update_user` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '修改人',
   PRIMARY KEY (`role_menu_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色菜单关系表' ROW_FORMAT = DYNAMIC;
@@ -286,9 +286,9 @@ CREATE TABLE `sys_user_info`  (
   `user_status` int NULL DEFAULT 1 COMMENT '是否锁定，1未锁定，2锁定',
   `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '盐',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
-  `create_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_user` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建人',
-  `update_date` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `update_user` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '修改人',
   `version` int NULL DEFAULT 0 COMMENT '版本号',
   PRIMARY KEY (`user_id`) USING BTREE
@@ -307,9 +307,9 @@ CREATE TABLE `sys_user_role`  (
   `user_role_id` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键ID',
   `sys_user_id` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户ID',
   `sys_role_id` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限ID',
-  `create_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_user` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建人',
-  `update_date` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `update_user` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '修改人',
   PRIMARY KEY (`user_role_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户角色关系表' ROW_FORMAT = DYNAMIC;
@@ -333,9 +333,9 @@ CREATE TABLE `system_log`  (
   `exception` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '异常信息',
   `operator` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '操作人',
   `visit_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '访问地址',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '生成时间',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '生成时间',
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 962 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '日志信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 961 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '日志信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of system_log
@@ -1725,8 +1725,8 @@ CREATE TABLE `tb_coupon`  (
   `coupon_total` int NULL DEFAULT NULL COMMENT '优惠券总量',
   `coupon_surplus` int NULL DEFAULT NULL COMMENT '优惠券剩余',
   `coupon_denomination` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '优惠券面额',
-  `coupon_start_time` datetime(0) NULL DEFAULT NULL COMMENT '优惠券开始时间',
-  `coupon_end_time` datetime(0) NULL DEFAULT NULL COMMENT '优惠券结束时间',
+  `coupon_start_time` datetime NULL DEFAULT NULL COMMENT '优惠券开始时间',
+  `coupon_end_time` datetime NULL DEFAULT NULL COMMENT '优惠券结束时间',
   `coupon_links` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '优惠券链接',
   `coupon_spread_links` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '优惠券推广链接',
   PRIMARY KEY (`commodity_id`) USING BTREE
@@ -1747,10 +1747,10 @@ CREATE TABLE `worker_node`  (
   `port` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'port',
   `type` int NOT NULL COMMENT 'node type: ACTUAL or CONTAINER',
   `launch_date` date NOT NULL COMMENT 'launch date',
-  `modified` timestamp(0) NOT NULL COMMENT 'modified time',
-  `created` timestamp(0) NOT NULL COMMENT 'created time',
+  `modified` timestamp NOT NULL COMMENT 'modified time',
+  `created` timestamp NOT NULL COMMENT 'created time',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'DB WorkerID Assigner for UID Generator' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'DB WorkerID Assigner for UID Generator' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of worker_node
