@@ -42,17 +42,12 @@ public class SystemController {
 
 	@GetMapping("/login")
 	public ModelAndView loginPage() {
-		return new ModelAndView("login2");
+		return new ModelAndView("login");
 	}
 
 	@GetMapping("/index")
 	public ModelAndView indexPage() {
 		return new ModelAndView("index");
-	}
-
-	@GetMapping("/index2")
-	public ModelAndView indexPage2() {
-		return new ModelAndView("index2");
 	}
 
 	@PostMapping("/dologin")

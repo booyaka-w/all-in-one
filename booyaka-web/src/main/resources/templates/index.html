@@ -1,199 +1,89 @@
 <!DOCTYPE html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Enlink</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>管理后台</title>
 		<link rel="shortcut icon" href="../images/logo/favicon.png">
-		<link href="../css/app.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-4.5.0/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-table-1.18.0/bootstrap-table.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/layui-v2.5.7/css/layui.css">
+		<link rel="stylesheet" href="../plugin/fontawesome-free-5.15.1-web/css/all.min.css" >
+		<style type="text/css">
+			a:link {
+				text-decoration: none;
+				/* 指正常的未被访问过的链接*/
+			}
+			a:visited {
+				text-decoration: none;
+				/*指已经访问过的链接*/
+			}
+			a:hover {
+				text-decoration: none;
+				/*指鼠标在链接*/
+			}
+			a:active {
+				text-decoration: none;
+				/* 指正在点的链接*/
+			}
+		</style>
 	</head>
-	<body>
-		<div class="app">
-			<div class="layout">
-				<!-- Header START -->
-				<div class="header">
-					<div class="logo logo-dark">
-						<a href="http://www.themenate.net/enlink-bs/dist/index.html">
-							<img src="../images/logo.png" alt="Logo">
-							<img class="logo-fold" src="../images/logo-fold.png" alt="Logo">
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<div class="layui-logo">管理后台</div>
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							<img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+							<shiro:principal/>
 						</a>
-					</div>
-					<div class="logo logo-white">
-						<a href="http://www.themenate.net/enlink-bs/dist/index.html">
-							<img src="../images/logo-white.png" alt="Logo">
-							<img class="logo-fold" src="../images/logo-fold-white.png" alt="Logo">
-						</a>
-					</div>
-					<div class="nav-wrap">
-						<ul class="nav-left">
-							<li class="desktop-toggle">
-								<a href="javascript:void(0);">
-									<i class="anticon"></i>
-								</a>
-							</li>
-							<li class="mobile-toggle">
-								<a href="javascript:void(0);">
-									<i class="anticon"></i>
-								</a>
-							</li>
-						</ul>
-						<ul class="nav-right">
-							<li id="scale-left" class="dropdown dropdown-animated scale-left">
-								<div class="pointer" data-toggle="dropdown">
-									<div class="avatar avatar-image  m-h-10 m-r-15">
-										<img src="../images/thumb-3.jpg" alt="">
-									</div>
-								</div>
-								<div id="profile" class="p-b-15 p-t-20 dropdown-menu pop-profile">
-									<div class="p-h-20 p-b-15 m-b-10 border-bottom">
-										<div class="d-flex m-r-50">
-											<div class="avatar avatar-lg avatar-image">
-												<img src="../images/thumb-3.jpg" alt="">
-											</div>
-											<div class="m-l-10">
-												<p class="m-b-0 text-dark font-weight-semibold">Marshall Nichols</p>
-												<p class="m-b-0 opacity-07">UI/UX Desinger</p>
-											</div>
-										</div>
-									</div>
-									<a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-										<div class="d-flex align-items-center justify-content-between">
-											<div>
-												<i class="anticon opacity-04 font-size-16 anticon-user"></i>
-												<span class="m-l-10">Edit Profile</span>
-											</div>
-											<i class="anticon font-size-10 anticon-right"></i>
-										</div>
-									</a>
-									<a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-										<div class="d-flex align-items-center justify-content-between">
-											<div>
-												<i class="anticon opacity-04 font-size-16 anticon-lock"></i>
-												<span class="m-l-10">Account Setting</span>
-											</div>
-											<i class="anticon font-size-10 anticon-right"></i>
-										</div>
-									</a>
-									<a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-										<div class="d-flex align-items-center justify-content-between">
-											<div>
-												<i class="anticon opacity-04 font-size-16 anticon-project"></i>
-												<span class="m-l-10">Projects</span>
-											</div>
-											<i class="anticon font-size-10 anticon-right"></i>
-										</div>
-									</a>
-									<a href="/system/logout" class="dropdown-item d-block p-h-15 p-v-10">
-										<div class="d-flex align-items-center justify-content-between">
-											<div>
-												<i class="anticon opacity-04 font-size-16 anticon-logout"></i>
-												<span class="m-l-10">Logout</span>
-											</div>
-											<i class="anticon font-size-10 anticon-right"></i>
-										</div>
-									</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- Header END -->
-				<!-- Side Nav START -->
-				<div class="side-nav">
-					<div class="side-nav-inner">
-						<ul class="side-nav-menu scrollable ps-container ps-theme-default" data-ps-id="cb715644-5fcd-7e98-5e9b-3889f1bef07a">
-							<li class="nav-item dropdown open" th:each="module:${session.activeUser.menusList}">
-								<a class="dropdown-toggle" href="javascript:void(0);">
-									<span class="icon-holder">
-										<i class="anticon anticon-dashboard"></i>
-									</span>
-									<span class="title" th:text="${module.menuName}"></span>
-									<span class="arrow">
-										<i class="arrow-icon"></i>
-									</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li th:each="menus:${module.childList}" th:onclick="loadPage('#content',[[${menus.menuPath}]])">
-										<a href="javascript:void(0);" th:text="${menus.menuName}"></a>
-									</li>
-									<li class="active">
-										<a href="javascript:void(0);">CRM</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- Side Nav END -->
-				<!-- Page Container START -->
-				<div class="page-container">
-					<!-- Content Wrapper START -->
-					<div id="content" class="main-content">
-
-						sdfsdf
-
-
-					</div>
-					<!-- Content Wrapper END -->
-					<!-- Footer START -->
-					<footer class="footer">
-						<div class="footer-content">
-							<p class="m-b-0">Copyright © 2020 Theme_Nate. All rights reserved.</p>
-						</div>
-					</footer>
-					<!-- Footer END -->
+						<dl class="layui-nav-child">
+							<dd><a href="">基本资料</a></dd>
+							<dd><a href="">安全设置</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item"><a href="/system/logout">退了</a></li>
+				</ul>
+			</div>
+			<div class="layui-side layui-side-menu layui-bg-black">
+				<div class="layui-side-scroll">
+					<ul class="layui-nav layui-nav-tree" >
+						<li class="layui-nav-item" th:each="module:${session.activeUser.menusList}">
+							<a href="javascript:;" >
+								<i th:class='${module.menuIcon}'></i>
+								<cite th:text="${module.menuName}"></cite>
+							</a>
+							<dl class="layui-nav-child">
+								<dd th:each="menus:${module.childList}" th:onclick="loadPage('#layui-body',[[${menus.menuPath}]])">
+									<a href="javascript:void(0);" th:text="${menus.menuName}"></a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
 				</div>
 			</div>
+			<div id="layui-body" class="layui-body" style="padding: 15px;">
+				内容主体区域
+			</div>
+			<div class="layui-footer">
+				© layui.com - 底部固定区域
+			</div>
 		</div>
-		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-		<script src="https://cdn.bootcdn.net/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/jquery-3.5.1.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/popper.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-4.5.0/js/bootstrap.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-table-1.18.0/bootstrap-table.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/laydate-v5.0.9/laydate.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/layui-v2.5.7/layui.js"></script>
 		<script type="text/javascript">
-			$(function() {
-				$('.header .nav-left .desktop-toggle').on('click', () => {
-					$('.app').toggleClass("is-folded")
-				});
-				$('.header .nav-left .mobile-toggle').on('click', () => {
-					$('.app').toggleClass("is-expand")
-				});
-				$('.side-nav .side-nav-menu li a').on('click', (e) => {
-					const $this = $(e.currentTarget);
-					if ($this.parent().hasClass("open")) {
-						$this.parent().children('.dropdown-menu').slideUp(200, () => {
-							$this.parent().removeClass("open");
-						});
-					} else {
-						$this.parent().parent().children('li.open').children('.dropdown-menu').slideUp(200);
-						$this.parent().parent().children('li.open').children('a').removeClass('open');
-						$this.parent().parent().children('li.open').removeClass("open");
-						$this.parent().children('.dropdown-menu').slideDown(200, () => {
-							$this.parent().addClass("open");
-						});
-					}
-				});
-				$('div.pointer').on('click', () => {
-					var flag = $('.pop-profile').hasClass("show");
-					if (flag) {
-						$('div.pointer')[0].setAttribute('aria-expanded', false)
-						$('#profile').removeClass('show')
-						$('#scale-left').removeClass('show')
-					} else {
-						$('div.pointer')[0].setAttribute('aria-expanded', true)
-						$('#profile').addClass('show')
-						$('#scale-left').addClass('show')
-					}
-				});
-			});
-
-			function loadPage(id, path) {
-				$(id).load(path, function(response, status, xhr) {
-					console.log("11111")
-					if (status == 'error') {
-						if (xhr.status == 403) {
-							$(id).load(jQuery.parseJSON(response).object);
-						}
-					}
-				});
+			function loadPage(selector, path) {
+				$(selector).load(path,function(response,status,xhr){})
 			}
+			layui.use('element', function() {
+				var element = layui.element;
+			});
+			
 		</script>
 	</body>
 </html>

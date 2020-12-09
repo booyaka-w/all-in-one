@@ -139,3 +139,11 @@ $('#expanded').click(function() {
 		initialState: 'expanded',
 	});
 })
+
+/**
+ * 显示角色模态框
+ */
+$('#model-add').click(function() {
+	$("#modalTitle").text("添加角色");
+	$('#modal').modal('show');
+})

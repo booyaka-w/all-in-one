@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 	<head>
 		<meta charset="utf-8">
 		<meta name="renderer" content="webkit">
@@ -33,13 +33,69 @@
 					<t:select name="userStatus" param="STATUS" class="custom-select mr-sm" data-empty="true"></t:select>
 				</div>
 				<div class="input-group mb-2 col-4">
-					<button type="button" class="btn btn-outline-info mr-2"><i class="fas fa-plus"></i> 添加</button>
+					<button type="button" class="btn btn-outline-info mr-2" id="model-add"><i class="fas fa-plus"></i> 添加模块</button>
 					<button type="button" class="btn btn-outline-info mr-2"><i class="fas fa-search"></i> 查询</button>
 					<button type="button" class="btn btn-outline-info mr-2" id="expanded"><i class="fas fa-angle-double-down"></i> 展开</button>
 					<button type="button" class="btn btn-outline-info mr-1" id="collapsed"><i class="fas fa-angle-double-right"></i> 折叠</button>
 				</div>
 			</div>
 			<table id="table" class="table" data-show-columns="true"></table>
+		</div>
+		<!-- 模块添加 -->
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<h5 class="modal-title" id="modalTitle"></h5>
+		      		</div>
+			      	<div class="modal-body">
+			        	<form id="modalFrom" data-parsley-validate="validate">
+			        		<input type="hidden" class="form-control" id="roleId" name="roleId">
+			        		<input type="hidden" class="form-control" id="version" name="version">
+			        		<div class="row">
+	                            <div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label>名称 : </label>
+	                                    <input type="text" class="form-control" id="roleName" name="roleName" required="required" data-parsley-required-message="名称不可为空">
+	                                </div>
+	                            </div>
+	                            <div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label> 所属平台 : </label>
+	                                    <t:select id="roleSubordinate" name="roleSubordinate" param="SUBORDINATE" class="form-control" data-function="changeType()"></t:select>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row">
+	                        	<div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label>备注 : </label>
+	                                    <input type="text" class="form-control" id="remark" name="remark" required="required" data-parsley-required-message="备注不可为空">
+	                                </div>
+	                            </div>
+	                            <div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label> 状态 : </label>
+	                                    <t:select id="roleStatus" name="roleStatus" param="STATUS" class="form-control"></t:select>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row">
+	                            <div class="col-md-12">
+	                                <div class="form-group">
+	                                    <label>功能菜单 : </label>
+	                                    <table class="table table-striped m-b-1" id="menu-table" data-height="299"></table>
+	                                </div>
+	                            </div>
+	                        </div>
+			        	</form>
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-sm btn-secondary" onclick="hideModal('#modal','#modalFrom')">取消</button>
+			        	<button type="button" class="btn btn-sm btn-primary" onclick="saveModal('#modal','#modalFrom',this)">确定</button>
+			      	</div>
+		  		</div>
+			</div>
 		</div>
 		<script type="text/javascript" charset="utf-8" src="../plugin/bootstrap-table-1.18.0/bootstrap-table.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../plugin/jquery-treegrid-0.3.0/js/jquery.treegrid.min.js"></script>
