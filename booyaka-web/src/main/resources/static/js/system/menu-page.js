@@ -85,7 +85,7 @@ $(function() {
 			return params;
 		},
 		// 如果回调只是获取行数据，做一些逻辑，不涉及表格更新操作，可以使用onPostBody()，否则要使用onLoadSuccess()
-		onLoadSuccess : function() {
+		onPostBody : function() {
 			$table.treegrid({
 				treeColumn : 0,
 				initialState: 'collapsed',

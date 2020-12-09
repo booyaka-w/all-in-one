@@ -77,11 +77,7 @@
 		<script type="text/javascript" charset="utf-8" src="../plugin/layui-v2.5.7/layui.js"></script>
 		<script type="text/javascript">
 			function loadPage(selector, path) {
-				$(selector).load(path,function(response,status,xhr){
-					console.log(response)
-					console.log(status)
-					console.log(xhr)
-				})
+				$(selector).load(path,function(response,status,xhr){})
 			}
 			layui.use('element', function() {
 				var element = layui.element;
