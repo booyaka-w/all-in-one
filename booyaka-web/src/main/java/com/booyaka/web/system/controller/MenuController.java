@@ -54,7 +54,7 @@ public class MenuController {
 			map.put("name", temp.getMenuName());
 			map.put("icon", temp.getMenuIcon());
 			map.put("path", temp.getMenuPath());
-			map.put("subordinate", temp.getMenuSubordinate());
+			map.put("resource", temp.getResource());
 			map.put("type", temp.getMenuType());
 			map.put("version", temp.getVersion());
 			listMap.add(map);

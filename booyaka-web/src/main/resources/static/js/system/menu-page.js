@@ -12,15 +12,15 @@ $(function() {
 		parentIdField : 'pid',
 		columns : [{
 			field : 'name',
-			title : '名称',
+			title : '菜单名称',
 			width : 200
 		},{
-			field : 'subordinate',
-			title : '所属平台',
+			field : 'resource',
+			title : '资源标识',
 			width : 200
 		},{
 			field : 'path',
-			title : '权限值',
+			title : '路径标识',
 			width : 200
 		},{
 			field : 'icon',
@@ -28,7 +28,7 @@ $(function() {
 			width : 200
 		},{
 			field : 'type',
-			title : '类型',
+			title : '资源类型',
 			width : 100,
 			formatter : function(value, row, index) {
 				if (value === 1) {
