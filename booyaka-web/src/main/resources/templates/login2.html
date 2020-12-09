@@ -332,7 +332,7 @@
 		<div class="footer">
 			©版权所有 2014-2018 叁贰柒工作室<span class="padding-5">|</span><a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备16006642号-2</a>
 		</div>
-		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../plugin/jquery-3.5.1.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../plugin/jquery.form.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../plugin/parsley-2.9.2/parsley.js"></script>
 		<script type="text/javascript">
@@ -370,9 +370,9 @@
 		　　　　　　  		}
 	　　　　　　  		},
 		　　　　　　  	complete: function () {
-							$("#loginBtn").removeAttr("disabled");
-				    	},
-		                error:function(){}
+						$("#loginBtn").removeAttr("disabled");
+			    	},
+	                error:function(){}
 					}
 					$("#loginForm").ajaxSubmit(object);
 				}
