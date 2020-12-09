@@ -68,4 +68,11 @@ public interface SysMenuService {
 	List<SysMenu> queryModelByUserId(String userId);
 
 	List<SysMenu> queryMenuByUserId(String userId, String menuId);
+
+	/**
+	 * 查询系统所有按钮
+	 * 
+	 * @return
+	 */
+	List<SysMenu> queryAllButton();
 }

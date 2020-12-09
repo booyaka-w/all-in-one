@@ -70,4 +70,9 @@ public class SysMenuServiceImpl implements SysMenuService {
 	public List<SysMenu> queryMenuByUserId(String userId, String menuId) {
 		return sysMenuMapper.queryMenuByUserId(userId, menuId);
 	}
+
+	@Override
+	public List<SysMenu> queryAllButton() {
+		return sysMenuMapper.queryAllButton();
+	}
 }

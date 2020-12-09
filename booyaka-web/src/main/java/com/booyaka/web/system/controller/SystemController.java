@@ -91,4 +91,9 @@ public class SystemController {
 		return result;
 	}
 
+	@GetMapping("/unauthorized")
+	public ModelAndView unauthorizedPage() {
+		return new ModelAndView("unauthorized");
+	}
+
 }

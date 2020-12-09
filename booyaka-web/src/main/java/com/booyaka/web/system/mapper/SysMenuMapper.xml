@@ -261,4 +261,32 @@
 		sys_role_id IN ( SELECT sys_role_id FROM sys_user_role WHERE sys_user_id = #{param1}  ))
   </select>
   
+  <select id="queryAllButton" resultMap="BaseResultMap">
+	SELECT
+		* 
+	FROM
+		`sys_menu` 
+	WHERE
+		menu_type = 3 
+		AND menu_status =1
+  </select>
+
+  <select id="queryButtonByUserId" resultMap="BaseResultMap">
+	SELECT
+		* 
+	FROM
+		sys_menu 
+	WHERE
+		menu_status = 1 
+		AND menu_type = 3 
+		AND parent_id= #{param2} 
+		AND menu_id IN (
+		SELECT
+			sys_menu_id 
+		FROM
+			sys_role_menu 
+	WHERE
+		sys_role_id IN ( SELECT sys_role_id FROM sys_user_role WHERE sys_user_id = #{param1}  ))
+  </select>
+  
 </mapper>

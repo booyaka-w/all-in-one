@@ -1,6 +1,7 @@
 package com.booyaka.web.config;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.booyaka.web.shiro.ShiroJedisCacheManager;
 import com.booyaka.web.shiro.ShiroRealm;
+import com.booyaka.web.system.model.SysMenu;
 import com.booyaka.web.system.service.SysMenuService;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
@@ -44,18 +46,20 @@ public class ShiroConfiguration {
 	@Bean
 	public ShiroFilterFactoryBean shiroFilterFactoryBean() {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+
+		List<SysMenu> buttonList = menuService.queryAllButton();
+
 		/* 默认的登陆访问url */
 		shiroFilterFactoryBean.setLoginUrl("/system/login");
 		/* 登陆成功访问url */
 		shiroFilterFactoryBean.setSuccessUrl("/system/index");
 		/* 未授权界面 */
-		shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized");
+		shiroFilterFactoryBean.setUnauthorizedUrl("/system/unauthorized");
 		/* 自定义拦截器 */
 		Map<String, Filter> filtersMap = new LinkedHashMap<String, Filter>();
 		shiroFilterFactoryBean.setFilters(filtersMap);
 		/* 拦截器 */
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
-
 		/* 不需要认证 */
 		filterChainDefinitionMap.put("/system/dologin", "anon");
 		filterChainDefinitionMap.put("/css/**", "anon");
@@ -67,9 +71,9 @@ public class ShiroConfiguration {
 		filterChainDefinitionMap.put("/system/logout", "logout");
 		/* 需要认证 */
 //		filterChainDefinitionMap.put("/**/url", "requestURL");
-//		for (SysMenu menu : ButtonList) {
-//			filterChainDefinitionMap.put(menu.getResource(), "perms[" + menu.getMenuPath() + "]");
-//		}
+		buttonList.forEach(butten -> {
+			filterChainDefinitionMap.put(butten.getMenuPath(), "perms[" + butten.getResource() + "]");
+		});
 		// filterChainDefinitionMap.put("/menu/saveOrUpdate", "perms[a]");
 		filterChainDefinitionMap.put("/**", "authc");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

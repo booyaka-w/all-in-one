@@ -62,4 +62,6 @@ public interface SysMenuMapper {
 	List<SysMenu> queryMenuByUserId(String userId, String menuId);
 
 	List<SysMenu> queryButtonByUserId(String userId);
+
+	List<SysMenu> queryAllButton();
 }
