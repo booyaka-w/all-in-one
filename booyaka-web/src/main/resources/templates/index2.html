@@ -50,7 +50,7 @@
 					<ul class="layui-nav layui-nav-tree" >
 						<li class="layui-nav-item" th:each="module:${session.activeUser.menusList}">
 							<a href="javascript:;" >
-								<i class="layui-icon layui-icon-home"></i>
+								<i th:class='${module.menuIcon}'></i>
 								<cite th:text="${module.menuName}"></cite>
 							</a>
 							<dl class="layui-nav-child">
