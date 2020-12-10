@@ -982,11 +982,12 @@ a cite {
 }
 
 .layui-body {
+	position: absolute;
 	left: 200px;
 	right: 0;
 	top: 0;
 	bottom: 0;
-	z-index: 1;
+	z-index: 998;
 	width: auto;
 	overflow-y: auto;
 	box-sizing: border-box
@@ -1007,10 +1008,9 @@ a cite {
 }
 
 .layui-layout-admin .layui-body {
-	margin-left:200px;
+	position: fixed;
 	top: 60px;
-	bottom: 44px;
-	padding: 15px
+	bottom: 44px
 }
 
 .layui-layout-admin .layui-main {
