@@ -47,7 +47,7 @@ public class SystemController {
 
 	@GetMapping("/index")
 	public ModelAndView indexPage() {
-		return new ModelAndView("index");
+		return new ModelAndView("index1");
 	}
 
 	@PostMapping("/dologin")
